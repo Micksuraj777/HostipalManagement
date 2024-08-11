@@ -1,1 +1,1 @@
-# Miniproject
+# HostipalManagement

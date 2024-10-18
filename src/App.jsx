@@ -6,9 +6,7 @@ import About from "./components/about";
 import Service from "./components/service"; 
 import Appointment from "./components/appointment"; 
 import Contact from "./components/contact"; 
-import Register from "./components/register";
-import SignIn from "./components/signin";
-import Footer from "./components/footer";
+import LoginIn from "./components/login";
 
 function App() {
   return (
@@ -20,10 +18,9 @@ function App() {
         <Route path="/services" element={<Service />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signin" element={<SignIn/>} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<LoginIn/>} />
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </Router>
   );
 }

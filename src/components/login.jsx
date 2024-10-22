@@ -10,11 +10,11 @@ export default function LoginIn() {
       <div className='flex justify-center items-center h-full'>
         <div className='flex flex-col gap-5'>
           <div className='flex gap-3'>
-            <img src={User} alt='setting' className='w-10 h-10' />
+            <img src={User} alt='setting' className='w-8 h-9' />
             <Input type='text' placeholder='Username'  />
           </div>
           <div className='flex gap-3'>
-            <img src={Password} alt='setting' className='w-10 h-10' />
+            <img src={Password} alt='setting' className='w-8 h-8' />
             <Input type='password' placeholder='Password'  />
           </div>
           <Button href="/" bgColor="#9083D5" className="text-white">Login</Button>

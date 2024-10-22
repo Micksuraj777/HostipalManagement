@@ -2,15 +2,12 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const navItems = [
-    { path: "/about", label: "Add New Patient" },
-    { path: "/appointment", label: "Patient info" },
-    { path: "/services", label: "Doctor info" },
-    { path: "/appointment", label: "Department" },
-    { path: "/contact", label: "Room" },
-    { path: "/contact", label: "Update Patient Details" },
-    { path: "/contact", label: "Patient Discharge" },
-    { path: "/contact", label: "Medicine" },
-    { path: "/contact", label: "Hostipal Ambulance" },
+    { path: "/add-patient", label: "Add New Patient" },
+    { path: "/patient-info", label: "Patient info" },
+    { path: "/doctor-info", label: "Doctor info" },
+    { path: "/room", label: "Room" },
+    { path: "/update-patient", label: "Update Patient Details" },
+    { path: "/medicine", label: "Medicine" },
   ];
 
   return (
@@ -20,9 +17,9 @@ const Home = () => {
           Welcome to Our Hospital Management System
         </h1>
       </div>
-      <ul className="grid grid-cols-3 gap-5 font-semibold pt-[5%] mx-auto max-w-screen-md justify-items-center h-full">
+      <ul className="grid grid-cols-3 gap-5 font-semibold pt-[10%] mx-auto max-w-screen-md justify-items-center h-full">
         {navItems.map((item) => (
-          <li key={item.path} className="p-2 cursor-pointer bg-[#9083D5] w-full rounded-md text-white border-2 border-black">
+          <li key={item.path} className="p-2 cursor-pointer bg-[#9083D5] w-full rounded-md text-white border-2 border-black text-center">
             <Link to={item.path}>{item.label}</Link>
           </li>
         ))}

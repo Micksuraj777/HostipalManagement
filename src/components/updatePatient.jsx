@@ -1,8 +1,7 @@
-import Setting from "../assets/icons/settings.svg";
 import { Button } from "./Button";
 import Input from "./input";
 
-export default function About() {
+export default function UpdatePatient() {
   return (
     <section className="w-full max-w-screen-2xl mx-auto h-[90vh] px-14 pt-28">
       <div className="flex gap-5">
@@ -15,6 +14,13 @@ export default function About() {
             type="text"
             variant="textarea"
             placeholder="Enter the Address"
+          />
+          <Input
+            variant="select"
+            options={[
+              { value: "Admitted", label: "Admitted" },
+              { value: "Discharge", label: "Discharge" },
+            ]}
           />
         </div>
         <div className="flex flex-col gap-3 w-1/2">
@@ -46,7 +52,7 @@ export default function About() {
         </div>
       </div>
       <div className="flex justify-center w-full pt-8">
-      <Button href="/" bgColor="#9083D5" className="text-white px-10">Add Patient</Button>
+      <Button href="/" bgColor="#9083D5" className="text-white px-10">Update Patient</Button>
       </div>
     </section>
   );

@@ -7,60 +7,127 @@ export function Tables({ data }) {
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden border border-gray-200 md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="min-w-full divide-y divide-gray-200 table-fixed">
                 <thead className="bg-gray-50">
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>SL NO</span>
-                      </div>
+                      Patient ID
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Patient</span>
-                      </div>
+                      Name
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Date-Time</span>
-                      </div>
+                      Phone No
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                      className="w-2/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Status</span>
-                      </div>
+                      Address
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Blood Group
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Gender
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Room No
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Status
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Referred Doctor
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Date of Join
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Date of Birth
+                    </th>
+                    <th
+                      scope="col"
+                      className="w-1/12 py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                    >
+                      Age
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {data.map((item) => (
-                    <tr key={item.slNo}>
+                    <tr key={item.patient_id}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        {item.slNo}
+                        {item.patient_id}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.amount}
+                        {item.name}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.dateTime}
+                        {item.phone_no}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.address}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.blood_group}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.gender}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.room}
                       </td>
                       <td
                         className={`px-4 py-4 text-sm font-medium whitespace-nowrap ${
-                          item.status === "Admitted" ? "text-green-500" : "text-red-500"
-                        }`}>
+                          item.status === "Admitted"
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
                         {item.status}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.refer_doc}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.date_of_join}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.date_of_birth}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                        {item.age}
                       </td>
                     </tr>
                   ))}
@@ -90,7 +157,7 @@ export function Tables2({ data }) {
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
                       <div className="flex items-center gap-x-3">
-                        <span>SL NO</span>
+                        <span>Doctor ID</span>
                       </div>
                     </th>
                     <th
@@ -106,7 +173,7 @@ export function Tables2({ data }) {
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
                       <div className="flex items-center gap-x-3">
-                        <span>Specialty</span>
+                        <span>Department</span>
                       </div>
                     </th>
                     <th
@@ -114,7 +181,7 @@ export function Tables2({ data }) {
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
                       <div className="flex items-center gap-x-3">
-                        <span>Contact</span>
+                        <span>Phone No</span>
                       </div>
                     </th>
                     <th
@@ -129,22 +196,24 @@ export function Tables2({ data }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {data.map((item) => (
-                    <tr key={item.slNo}>
+                    <tr key={item.doctor_id}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        {item.slNo}
+                        {item.doctor_id}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {item.name}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.specialty}
+                        {item.department}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.contact}
+                        {item.phone_no}
                       </td>
                       <td
                         className={`px-4 py-4 text-sm font-medium whitespace-nowrap ${
-                          item.status === "Available" ? "text-green-500" : "text-red-500"
+                          item.status === "Active"
+                            ? "text-green-500"
+                            : "text-red-500"
                         }`}
                       >
                         {item.status}
@@ -160,6 +229,7 @@ export function Tables2({ data }) {
     </section>
   );
 }
+
 
 
 export function RoomAvailabilityTable({ data }) {
@@ -176,55 +246,45 @@ export function RoomAvailabilityTable({ data }) {
                       scope="col"
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Room No</span>
-                      </div>
+                      Room No
                     </th>
                     <th
                       scope="col"
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Patient Name</span>
-                      </div>
+                      Patient ID
                     </th>
                     <th
                       scope="col"
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Room Type</span>
-                      </div>
+                      Type
                     </th>
                     <th
                       scope="col"
                       className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
                     >
-                      <div className="flex items-center gap-x-3">
-                        <span>Status</span>
-                      </div>
+                      Status
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {data.map((item) => (
-                    <tr key={item.roomNo}>
+                    <tr key={item.room_no}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        {item.roomNo}
+                        {item.room_no}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.patientName || "N/A"}
+                        {item.patient_id || "N/A"}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.roomType}
+                        {item.type}
                       </td>
                       <td
                         className={`px-4 py-4 text-sm font-medium whitespace-nowrap ${
-                          item.status === "Available"
-                            ? "text-green-500"
-                            : item.status === "Occupied"
+                          item.status === "Occupied"
                             ? "text-red-500"
-                            : "text-yellow-500"
+                            : "text-green-500"
                         }`}
                       >
                         {item.status}
@@ -240,7 +300,6 @@ export function RoomAvailabilityTable({ data }) {
     </section>
   );
 }
-
 
 export function MedicineTable({ data }) {
   return (
@@ -322,7 +381,9 @@ export function MedicineTable({ data }) {
                       </td>
                       <td
                         className={`px-4 py-4 text-sm font-medium whitespace-nowrap ${
-                          item.status === "In Stock" ? "text-green-500" : "text-red-500"
+                          item.status === "In Stock"
+                            ? "text-green-500"
+                            : "text-red-500"
                         }`}
                       >
                         {item.status}
@@ -338,5 +399,3 @@ export function MedicineTable({ data }) {
     </section>
   );
 }
-
-

@@ -363,12 +363,12 @@ export function MedicineTable({ data }) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {data.map((item) => (
-                    <tr key={item.slNo}>
+                    <tr key={item.medicine_id}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                        {item.slNo}
+                        {item.medicine_id}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {item.medicineName}
+                        {item.name}
                       </td>
                       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                         {item.dosage}
@@ -381,7 +381,7 @@ export function MedicineTable({ data }) {
                       </td>
                       <td
                         className={`px-4 py-4 text-sm font-medium whitespace-nowrap ${
-                          item.status === "In Stock"
+                          item.status === "Available"
                             ? "text-green-500"
                             : "text-red-500"
                         }`}

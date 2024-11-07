@@ -4,68 +4,86 @@ import Password from "../assets/icons/password.png";
 import Doc from "../assets/images/doctor.avif";
 import { Button } from "./Button";
 import Input from "./input";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function LoginIn() {
-  const [username, setUsername] = useState(""); // State for username
-  const [password, setPassword] = useState(""); // State for password
-  const [error, setError] = useState(""); // State for error handling
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState(""); // Store reCAPTCHA token
 
-  const navigate = useNavigate(); // React Router navigate for redirection
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Hardcoded credentials
-    const validUsername = "admin";
-    const validPassword = "123";
-
-    // Check if the entered credentials are correct
-    if (username === validUsername && password === validPassword) {
-      // Redirect to homepage if credentials are correct
-      navigate("/");
-    } else {
-      // Show error message if credentials are incorrect
-      setError("Invalid username or password");
+    if (!captchaToken) {
+      setError("Please complete the CAPTCHA verification.");
+      return;
     }
+
+    try {
+      // Send token, username, and password to the backend for verification
+      const response = await fetch("/api/verify-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password, token: captchaToken }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        navigate("/"); // Redirect on successful login
+      } else {
+        setError(result.message || "Invalid username or password");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      setError("An error occurred. Please try again.");
+    }
+  };
+
+  // Get reCAPTCHA token and store it
+  const handleCaptchaChange = (value) => {
+    setCaptchaToken(value);
   };
 
   return (
     <div className='w-full max-w-screen-2xl mx-auto h-[90vh]'>
       <div className='flex justify-center items-center h-full'>
         <form onSubmit={handleLogin} className='flex flex-col gap-5'>
-          {/* Username input */}
           <div className='flex gap-3'>
             <img src={User} alt='setting' className='w-8 h-9' />
             <Input 
               type='text' 
               placeholder='Username' 
               value={username} 
-              onChange={(e) => setUsername(e.target.value)} // Update username
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
-          {/* Password input */}
           <div className='flex gap-3'>
             <img src={Password} alt='setting' className='w-8 h-8' />
             <Input 
               type='password' 
               placeholder='Password' 
               value={password} 
-              onChange={(e) => setPassword(e.target.value)} // Update password
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          {/* Error message */}
           {error && <div className="text-red-500">{error}</div>}
 
-          {/* Login button */}
+          <ReCAPTCHA
+            sitekey="6LePBngqAAAAABVf5503OiRl6Kh-o7tvgwXBU6ZK" // Replace with your site key
+            onChange={handleCaptchaChange}
+          />
+
           <Button type="submit" bgColor="#9083D5" className="text-white">
             Login
           </Button>
         </form>
 
-        {/* Image section */}
         <div>
           <img src={Doc} alt='doctor' className='object-cover w-[200px] animate-bounce animate-infinite animate-ease-linear animate-normal' />
         </div>

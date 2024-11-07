@@ -32,7 +32,7 @@ export default function Room() {
 
   return (
     <div className='w-full max-w-screen-xl mx-auto h-screen'>
-      <h1 className="text-[#9083D5] text-xl font-semibold pt-6">
+      <h1 className="text-[#9083D5] text-xl font-semibold pt-20">
         Room-info
       </h1>
       <RoomAvailabilityTable data={roomData} /> {/* Pass fetched data to the table */}

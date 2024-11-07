@@ -4,7 +4,7 @@ import { Button } from "./Button";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center max-w-screen-xl mx-auto pt-5">
+    <nav className="flex justify-between items-center max-w-screen-xl mx-auto pt-5 absolute top-0 left-8 z-20">
       <Link to="/" className="flex items-center gap-2 cursor-pointer drop-shadow-2xl">
         <img src={Logo} alt="logo" className="w-10 h-10" />
         <h1 className="text-black text-2xl font-semibold">Hospital Management</h1>

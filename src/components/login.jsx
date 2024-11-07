@@ -67,7 +67,7 @@ export default function LoginIn() {
 
         {/* Image section */}
         <div>
-          <img src={Doc} alt='doctor' className='object-cover w-[200px]' />
+          <img src={Doc} alt='doctor' className='object-cover w-[200px] animate-bounce animate-infinite animate-ease-linear animate-normal' />
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Doc from "../assets/images/doc.jpeg"
 
 const Home = () => {
   const navItems = [
@@ -11,19 +12,25 @@ const Home = () => {
   ];
 
   return (
-    <main className="w-full max-w-screen-2xl mx-auto overflow-hidden">
-      <div className="flex items-center justify-center animate-scroll">
-        <h1 className="text-[#9083D5] text-5xl font-semibold pt-14 whitespace-nowrap">
-          Welcome to Our Hospital Management System
-        </h1>
+    <main className="w-full max-w-screen-2xl mx-auto flex">
+      <div className="w-3/5 ">
+        <img src={Doc} alt="doc" className="w-full h-screen animate-fade-right animate-once animate-duration-[2000ms]" />
       </div>
-      <ul className="grid grid-cols-3 gap-5 font-semibold pt-[10%] mx-auto max-w-screen-md justify-items-center h-full">
+      <div className="flex flex-col items-center justify-center w-2/5 animate-fade-left animate-once animate-duration-[2000ms]">
+        <h1 className="text-[#9083D5] text-5xl font-semibold pt-14 text-center animate-fade-up animate-once animate-duration-[2000ms]">
+          Welcome to our Hospital Management System
+        </h1>
+      <ul className="flex flex-col gap-5 font-semibold pt-[10%] mx-auto max-w-screen-md justify-items-center h-full animate-fade-down animate-once animate-duration-[2000ms]">
         {navItems.map((item) => (
-          <li key={item.path} className="p-2 cursor-pointer bg-[#9083D5] w-full rounded-md text-white border-2 border-black text-center">
+          <li
+            key={item.path}
+            className="py-2 px-40 cursor-pointer bg-[#9083D5] w-full h-fit rounded-md text-white border-2 border-black text-center hover:animate-shake hover:animate-once"
+          >
             <Link to={item.path}>{item.label}</Link>
           </li>
         ))}
       </ul>
+      </div>
     </main>
   );
 };

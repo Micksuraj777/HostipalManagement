@@ -82,14 +82,14 @@ export default function AddPatient() {
   const roomTextColor = roomStatus === "Vacant" ? "text-green-500" : roomStatus === "Occupied" ? "text-red-500" : "text-black";
 
   return (
-    <section className="w-full max-w-screen-2xl mx-auto h-[90vh] px-14 pt-28">
+    <section className="w-full max-w-screen-2xl mx-auto h-[90vh] px-14 pt-28 flex flex-col justify-center">
       <form onSubmit={handleSubmit}>
         {/* Show error message */}
         {error && <div className="text-red-500 mb-4">{error}</div>}
 
         <div className="flex gap-5">
           {/* Left section of the form */}
-          <div className="flex flex-col gap-3 w-1/2">
+          <div className="flex flex-col gap-3 w-1/2 animate-fade-right animate-once ">
             <Input
               type="text"
               name="name"
@@ -123,7 +123,7 @@ export default function AddPatient() {
           </div>
 
           {/* Right section of the form */}
-          <div className="flex flex-col gap-3 w-1/2">
+          <div className="flex flex-col gap-3 w-1/2 animate-fade-left animate-once ">
             <Input
               name="room"
               value={formData.room}

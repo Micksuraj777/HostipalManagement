@@ -13,10 +13,12 @@ export default {
         },
       },
       animation: {
-        scroll: 'scroll 8s linear infinite',
+        scroll: 'scroll 20s linear infinite',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
 

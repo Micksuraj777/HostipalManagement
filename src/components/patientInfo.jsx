@@ -54,7 +54,7 @@ export default function PatientInfo() {
 
   return (
     <div className="w-full max-w-screen-xl mx-auto h-screen">
-      <div className="pt-6 flex justify-between items-center">
+      <div className="pt-20 flex justify-between items-center">
         <h1 className="text-[#9083D5] text-xl font-semibold">Patient Info</h1>
         <div className="relative">
           <input

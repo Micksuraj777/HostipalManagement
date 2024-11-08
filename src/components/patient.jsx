@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
-import Doc from "../assets/images/doc.jpeg"
+import Doc from "../assets/images/doct.jpg"
 
-const Home = () => {
+const Patient = () => {
   const navItems = [
-    { path: "/add-patient", label: "Add New Patient" },
-    { path: "/patient-info", label: "Patient info" },
-    { path: "/doctor-info", label: "Doctor info" },
-    { path: "/room", label: "Room" },
-    { path: "/update-patient", label: "Update Patient Details" },
-    { path: "/medicine", label: "Medicine" },
-    { path: "/update-doctor", label: "Update Doctor" },
+    { path: "/appointment", label: "Take Appointment" },
+    { path: "/doctor-information", label: "Doctor info" },
+    { path: "/room-info", label: "Room" },
+    { path: "/medi-info", label: "Medicine" },
     { path: "/", label: "Logout" },
   ];
 
@@ -20,7 +17,7 @@ const Home = () => {
       </div>
       <div className="flex flex-col items-center justify-center w-2/5 animate-fade-left animate-once animate-duration-[2000ms]">
         <h1 className="text-[#9083D5] text-4xl font-medium pt-14 text-center animate-fade-up animate-once animate-duration-[2000ms]">
-          Welcome to our Hospital Management System
+          Welcome to our Hospital 
         </h1>
       <ul className="flex flex-col gap-5 font-semibold pt-[10%] mx-auto max-w-screen-md justify-items-center h-full animate-fade-down animate-once animate-duration-[2000ms]">
         {navItems.map((item) => (
@@ -37,4 +34,5 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Patient;
+

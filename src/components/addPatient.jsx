@@ -18,8 +18,8 @@ export default function AddPatient() {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-  const [error, setError] = useState(""); // For handling errors
-  const [roomStatus, setRoomStatus] = useState(""); // For tracking room status
+  const [error, setError] = useState("");
+  const [roomStatus, setRoomStatus] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,23 +27,28 @@ export default function AddPatient() {
       ...prevData,
       [name]: value,
     }));
+
+    // Check for room field and fetch status when changed
+    if (name === "room") {
+      fetchRoomStatus(value);
+    }
   };
 
-  // Update room status based on selected room
-  useEffect(() => {
-    const vacantRooms = ["103", "104"];
-    const occupiedRooms = ["101", "102", "105", "106", "107", "108", "109", "110"];
-    
-    if (vacantRooms.includes(formData.room)) {
-      setRoomStatus("Vacant");
-    } else if (occupiedRooms.includes(formData.room)) {
-      setRoomStatus("Occupied");
-    } else {
-      setRoomStatus(""); // Default if room is neither vacant nor occupied
+  // Fetch room status from API based on selected room
+  const fetchRoomStatus = async (roomNo) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/room/${roomNo}/`);
+      setRoomStatus(response.data.status);
+    } catch (err) {
+      console.error("Error fetching room status:", err);
+      setRoomStatus(""); // Reset if room data is unavailable
     }
-  }, [formData.room]);
+  };
 
-  // Form validation function
+  // Determine text color based on room status
+  const roomTextColor =
+    roomStatus === "Vacant" ? "text-green-500" : roomStatus === "Occupied" ? "text-red-500" : "text-black";
+
   const validateForm = () => {
     if (!formData.name) return "Name is required.";
     if (!formData.phone_no || !/^\d{10}$/.test(formData.phone_no)) return "A valid 10-digit phone number is required.";
@@ -60,36 +65,29 @@ export default function AddPatient() {
     e.preventDefault();
     const validationError = validateForm();
     if (validationError) {
-      setError(validationError); // Set validation error message
+      setError(validationError);
       return;
     }
 
     try {
       const response = await axios.post("http://localhost:8000/patient/", formData);
-      console.log("Patient added successfully:", response.data);
-      alert("Registration done successfully!"); // Show success popup
-
-      // Clear form data after successful submission
+      alert("Registration done successfully!");
       setFormData(initialFormData);
-      setError(""); // Clear any previous errors
+      setRoomStatus(""); // Clear room status after submission
+      setError("");
     } catch (error) {
       console.error("Error adding patient:", error);
       setError("Error adding patient. Please try again.");
     }
   };
 
-  // Dynamically set the text color for the room input
-  const roomTextColor = roomStatus === "Vacant" ? "text-green-500" : roomStatus === "Occupied" ? "text-red-500" : "text-black";
-
   return (
-    <section className="w-full max-w-screen-2xl mx-auto h-[90vh] px-14 pt-28 flex flex-col justify-center">
+    <section className="w-full max-w-screen-2xl mx-auto h-[90vh] px-14 pt-28">
       <form onSubmit={handleSubmit}>
-        {/* Show error message */}
         {error && <div className="text-red-500 mb-4">{error}</div>}
 
         <div className="flex gap-5">
-          {/* Left section of the form */}
-          <div className="flex flex-col gap-3 w-1/2 animate-fade-right animate-once ">
+          <div className="flex flex-col gap-3 w-1/2">
             <Input
               type="text"
               name="name"
@@ -122,8 +120,7 @@ export default function AddPatient() {
             />
           </div>
 
-          {/* Right section of the form */}
-          <div className="flex flex-col gap-3 w-1/2 animate-fade-left animate-once ">
+          <div className="flex flex-col gap-3 w-1/2">
             <Input
               name="room"
               value={formData.room}
@@ -179,10 +176,13 @@ export default function AddPatient() {
           </div>
         </div>
 
-        <div className="flex justify-center w-full py-8">
+        <div className="flex justify-center w-full py-8 gap-10">
           <Button type="submit" bgColor="#9083D5" className="text-white px-10">
             Add Patient
           </Button>
+          <Button href="/dashboard" bgColor="#9083D5" className="text-white px-20 w-fit">
+          Back
+        </Button>
         </div>
       </form>
     </section>

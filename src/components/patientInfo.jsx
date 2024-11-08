@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "./Button";
 import { Tables } from "./tables";
-import Loader from "./Loader";
+import Loader from "./loader";
 import Search from "../assets/icons/search.png";
 
 export default function PatientInfo() {
@@ -69,7 +69,7 @@ export default function PatientInfo() {
       </div>
       <Tables data={filteredData} />
       <div className="w-full justify-center flex py-8">
-        <Button href="/" bgColor="#9083D5" className="text-white px-20 w-fit">
+        <Button href="/dashboard" bgColor="#9083D5" className="text-white px-20 w-fit">
           Back
         </Button>
       </div>

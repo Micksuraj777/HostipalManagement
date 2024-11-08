@@ -5,7 +5,7 @@ import { Tables2 } from "./tables";
 import Loader from './loader';
 import Search from "../assets/icons/search.png";
 
-export default function DoctorInfo() {
+export default function DoctorInfo2() {
   const [doctorData, setDoctorData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -60,7 +60,7 @@ export default function DoctorInfo() {
       </div>
       <Tables2 data={filteredData} />
       <div className="w-full justify-center flex py-8">
-        <Button href="/dashboard" bgColor="#9083D5" className="text-white px-20 w-fit">
+        <Button href="/patient" bgColor="#9083D5" className="text-white px-20 w-fit">
           Back
         </Button>
       </div>

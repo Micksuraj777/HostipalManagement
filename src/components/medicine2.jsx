@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Search from "../assets/icons/search.png";
 
 
-export default function Medicine() {
+export default function Medicine2() {
   const [medicineData, setMedicineData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +20,6 @@ export default function Medicine() {
       } catch (error) {
         setError('Error fetching data');
       } finally {
-        // Set a timer of 2000ms before updating the loading state
         setTimeout(() => {
           setLoading(false);
         }, 1000);
@@ -61,7 +60,7 @@ export default function Medicine() {
       </div>
     <MedicineTable data={filteredData} />
     <div className="w-full justify-center flex py-8">
-    <Button href="/dashboard" bgColor="#9083D5" className="text-white px-20 w-fit">Back</Button>
+    <Button href="/patient" bgColor="#9083D5" className="text-white px-20 w-fit">Back</Button>
     </div>
   </div>
   )
